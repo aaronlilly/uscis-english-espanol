@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US Civics Questions / Preguntas de Ciudadanía - Bilingüe</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .question { margin-bottom: 25px; }
+    .question h3 { margin-bottom: 5px; }
+    .answers li { margin-bottom: 3px; }
+    .spanish { color: blue; font-style: italic; margin-left: 15px; }
+    #spanish{color: blue; font-style: italic;}
+  </style>
+</head>
+<body>
+  <h1>US Civics Practice Questions (English)
+    <br>
+    <span class="spanish">Preguntas de Educación Cívica de EE.UU. (Español)</span>
+  </h1>
+  
+
+<div id="purpose">
+  The purpose of this document is to help Spanish-speaking people understand the questions on the Citizenship Test,
+  <br>
+  I provide the questions and answers in English and Spanish. Participants need to know that when taking the test, answers must be given in English.
+  <br><br>
+  The original questions and answers can be found here: 
+  <a href="https://www.uscis.gov/sites/default/files/document/questions-and-answers/2025-Civics-Test-128-Questions-and-Answers.pdf" target="_blank">
+    2025 Civics Test: 128 Questions and Answers (USCIS)
+  </a>
+  <br><br>
+  <span class="spanish">
+    El propósito de este documento es ayudar a las personas que hablan español a comprender las preguntas del examen de ciudadanía.
+    <br>
+    Proporciono las preguntas y respuestas en inglés y español. Los participantes deben saber que, al presentar el examen,
+    las respuestas deben darse en inglés.
+    <br><br>
+    Las preguntas y respuestas originales se pueden encontrar aquí: 
+    <a href="https://www.uscis.gov/sites/default/files/document/questions-and-answers/2025-Civics-Test-128-Questions-and-Answers.pdf" target="_blank">
+      Examen de Ciudadanía 2025: 128 Preguntas y Respuestas (USCIS)
+    </a>
+  </span>
+</div>
+
+
+
+  <div id="quizContainer"></div>
+
+  <!-- Include the questions array -->
+  <script src="questions.js"></script>
+  <script>
+    const container = document.getElementById("quizContainer");
+
+questions.forEach(q => {
+  const questionDiv = document.createElement("div");
+  questionDiv.classList.add("question");
+
+  // English question
+  const questionTitle = document.createElement("h3");
+  questionTitle.textContent = q.question; // changed from q.text
+  questionDiv.appendChild(questionTitle);
+
+  // Spanish translation
+  const questionEs = document.createElement("div");
+  questionEs.classList.add("spanish");
+  questionEs.textContent = q.question_es; // changed from q.textEs
+  questionDiv.appendChild(questionEs);
+
+  // Answers
+  const answerList = document.createElement("ul");
+  answerList.classList.add("answers");
+  q.answers.forEach(a => {
+    const li = document.createElement("li");
+    li.innerHTML = `${a.answer} <div class="spanish">${a.answer_es}</div>`; // updated keys
+    answerList.appendChild(li);
+  });
+
+  questionDiv.appendChild(answerList);
+  container.appendChild(questionDiv);
+});
+
+
+  </script>
+</body>
+</html>
